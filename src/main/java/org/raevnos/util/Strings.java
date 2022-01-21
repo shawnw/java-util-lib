@@ -8,8 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Various static methods to manipulate {@code String} and {@code
- * CharSequence} objects.
+ * Various static methods to manipulate {@code String} and {@code CharSequence} objects.
  */
 public class Strings {
     /**
@@ -25,8 +24,10 @@ public class Strings {
 
     /**
      * Converts a {@code CharSequence} object to a list of characters.
-     * No guarantees are made about the list's implementation, mutability, etc.
-     * For more control, use the {@code explode(CharSequence, Supplier)} version.
+     * No guarantees are made about the list's implementation,
+     * mutability, etc.  For more control, use the {@code explode(CharSequence, Supplier)}
+     * version.  For a light weight unmodifiable list view of a {@code String}, see
+     * {@code StringList}.
      * @param s the string to convert
      * @return A {@code List<Character>} representing the string's contents
      * @throws NullPointerException if passed a null argument
