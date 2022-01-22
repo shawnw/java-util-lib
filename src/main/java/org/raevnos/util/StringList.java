@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.RandomAccess;
 import java.util.Spliterator;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import java.io.Serializable;
 
 import org.raevnos.util.iterator.CharIterator;
@@ -98,16 +99,12 @@ public class StringList extends AbstractList<Character>
         return new CharIterator(source);
     }
 
-    static private Character intToCharacter(int c) {
-        return Character.valueOf((char) c);
-    }
-
     @Override public Stream<Character> stream() {
-        return source.chars().mapToObj(StringList::intToCharacter);
+        return StreamSupport.stream(new CharIterator(source), false);
     }
 
     @Override public Stream<Character> parallelStream() {
-        return source.chars().parallel().mapToObj(StringList::intToCharacter);
+        return StreamSupport.stream(new CharIterator(source), true);
     }
 
     @Override public boolean isEmpty() {
@@ -115,8 +112,12 @@ public class StringList extends AbstractList<Character>
     }
 
     @Override public boolean equals(Object o) {
-        StringList other = (StringList)o;
-        return source.equals(other.source);
+        if (o != null && o instanceof StringList) {
+            StringList other = (StringList)o;
+            return source.equals(other.source);
+        } else {
+            return false;
+        }
     }
 
     @Override public int hashCode() {

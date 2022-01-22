@@ -6,6 +6,9 @@ import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
+import org.raevnos.util.iterator.CharIterator;
 
 /**
  * Various static methods to manipulate {@code String} and {@code CharSequence} objects.
@@ -19,7 +22,7 @@ public class Strings {
      */
     static public Stream<Character> charStream(CharSequence s) {
         Objects.requireNonNull(s);
-        return s.chars().mapToObj(c -> Character.valueOf((char) c));
+        return StreamSupport.stream(new CharIterator(s), false);
     }
 
     /**
