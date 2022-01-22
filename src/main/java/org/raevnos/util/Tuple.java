@@ -1,3 +1,5 @@
+package org.raevnos.util;
+
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
