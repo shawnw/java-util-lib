@@ -1,4 +1,4 @@
-package org.raevnos.util;
+package org.raevnos.util.iterator;
 
 import java.util.Iterator;
 import java.util.Objects;

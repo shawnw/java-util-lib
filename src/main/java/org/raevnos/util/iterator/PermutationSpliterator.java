@@ -1,4 +1,4 @@
-package org.raevnos.util.stream;
+package org.raevnos.util.iterator;
 
 import java.util.Collection;
 import java.util.List;

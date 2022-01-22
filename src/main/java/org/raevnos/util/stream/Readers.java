@@ -12,28 +12,35 @@ import java.io.Reader;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
+import org.raevnos.util.iterator.CPSpliterator;
+import org.raevnos.util.iterator.DoubleReaderSpliterator;
+import org.raevnos.util.iterator.IntReaderSpliterator;
+import org.raevnos.util.iterator.LongReaderSpliterator;
+
 /**
  * Create streams from files.
  */
 public class Readers {
-    static private void closer(Closeable c) {
-        try {
-            c.close();
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
+    static private Runnable makeCloser(Closeable c) {
+        return () -> {
+            try {
+                c.close();
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        };
     }
 
     static private IntStream make(IntReaderSpliterator sp) {
-        return StreamSupport.intStream(sp, false).onClose(() -> closer(sp));
+        return StreamSupport.intStream(sp, false).onClose(makeCloser(sp));
     }
 
     static private LongStream make(LongReaderSpliterator sp) {
-        return StreamSupport.longStream(sp, false).onClose(() -> closer(sp));
+        return StreamSupport.longStream(sp, false).onClose(makeCloser(sp));
     }
 
     static private DoubleStream make(DoubleReaderSpliterator sp) {
-        return StreamSupport.doubleStream(sp, false).onClose(() -> closer(sp));
+        return StreamSupport.doubleStream(sp, false).onClose(makeCloser(sp));
     }
 
     /**
@@ -121,7 +128,7 @@ public class Readers {
     */
     public static IntStream codePoints(Reader r) {
         return StreamSupport.intStream(new CPSpliterator(r), false)
-            .onClose(() -> closer(r));
+            .onClose(makeCloser(r));
     }
 
     /**
@@ -144,6 +151,6 @@ public class Readers {
     public static IntStream codePoints(Path path, Charset cs) throws IOException {
         var br = Files.newBufferedReader(path, cs);
         return StreamSupport.intStream(new CPSpliterator(br), false)
-            .onClose(() -> closer(br));
+            .onClose(makeCloser(br));
     }
 }

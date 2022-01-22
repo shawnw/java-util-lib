@@ -8,6 +8,8 @@ import java.util.Spliterator;
 import java.util.stream.Stream;
 import java.io.Serializable;
 
+import org.raevnos.util.iterator.CharIterator;
+
 /**
  * An unmodifiable, space-efficient {@code List<Character>} view of a
  * backing {@code String}.

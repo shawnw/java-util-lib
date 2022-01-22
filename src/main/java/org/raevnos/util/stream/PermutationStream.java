@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import org.raevnos.util.iterator.PermutationSpliterator;
+
 /**
  * Create streams of all permutations of a collection.  The lists the
  * stream contains are immutable, and the backing collection should

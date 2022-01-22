@@ -1,4 +1,4 @@
-package org.raevnos.util.stream;
+package org.raevnos.util.iterator;
 
 import java.util.Objects;
 import java.util.Spliterator;

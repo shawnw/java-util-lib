@@ -7,6 +7,9 @@ import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import org.raevnos.util.iterator.AllCombosSpliterator;
+import org.raevnos.util.iterator.ComboSpliterator;
+
 /**
  * Create streams of combinations of elements of collections or
  * arrays. The lists the streams contains are immutable, and the
