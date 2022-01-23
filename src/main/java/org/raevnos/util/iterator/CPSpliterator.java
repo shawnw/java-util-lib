@@ -11,7 +11,7 @@ import java.nio.charset.CharacterCodingException;
 
 /**
  * A {@code Spliterator.OfInt} used to iterate over codepoints read from a file.
- * Use the methods in {@code CodePointStream} class to create streams based on it.
+ * Use the methods in {@code Readers} class to create streams based on it.
  */
 public class CPSpliterator
     implements Spliterator.OfInt, Closeable {
