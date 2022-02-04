@@ -11,6 +11,8 @@ import org.raevnos.util.iterator.StrideAdaptorSpliterator;
  */
 
 public class Streams {
+    private Streams() {}
+
     /**
      * Build a stream that returns every Nth element of the original
      * starting with the first, in encounter order.

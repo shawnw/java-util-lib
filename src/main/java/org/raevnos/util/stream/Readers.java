@@ -21,6 +21,8 @@ import org.raevnos.util.iterator.LongReaderSpliterator;
  * Create streams from files.
  */
 public class Readers {
+    private Readers() {}
+
     static private Runnable makeCloser(Closeable c) {
         return () -> {
             try {

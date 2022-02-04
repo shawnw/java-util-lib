@@ -17,6 +17,8 @@ import org.raevnos.util.iterator.ComboSpliterator;
  * use.
  */
 public class ComboStream {
+    private ComboStream() {}
+
     /**
      * Return a stream of combinations of a list
      * @param elems The elements to get combinations of

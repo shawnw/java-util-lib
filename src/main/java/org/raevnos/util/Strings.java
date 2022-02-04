@@ -14,6 +14,8 @@ import org.raevnos.util.iterator.CharIterator;
  * Various static methods to manipulate {@code String} and {@code CharSequence} objects.
  */
 public class Strings {
+    private Strings() {}
+
     /**
      * Get a stream of {@code Character} objects from a {@code CharSequence} object.
      * @param s The sequence to get a stream from.

@@ -16,6 +16,8 @@ import org.raevnos.util.iterator.PermutationSpliterator;
  * not be modified while the stream is being used.
  */
 public class PermutationStream {
+    private PermutationStream() {}
+
     /*
      * Return a stream of all permutations of the elements of a collection.
      * @param elems The elements to permute
@@ -35,8 +37,7 @@ public class PermutationStream {
     public static <T> Stream<List<T>> of(T[] elems) {
         Objects.requireNonNull(elems);
         return
-            StreamSupport.stream(new PermutationSpliterator<T>(Arrays.stream(elems)
-                                                               .collect(Collectors.toList())),
+            StreamSupport.stream(new PermutationSpliterator<T>(Arrays.asList(elems)),
                                  false);
     }
 
